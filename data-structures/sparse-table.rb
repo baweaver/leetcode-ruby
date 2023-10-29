@@ -1,3 +1,4 @@
+# typed: false
 # Sparse Table
 #
 #   https://cp-algorithms.com/data_structures/sparse-table.html

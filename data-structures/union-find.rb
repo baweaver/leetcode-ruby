@@ -1,3 +1,4 @@
+# typed: false
 # Union Find (weighed quick-union with path compression)
 #
 # See Algoritms Part 1 from Princeton University:

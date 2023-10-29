@@ -1,3 +1,4 @@
+# typed: false
 # Priority Queue
 #
 # See Algoritms Part 1 from Princeton University:

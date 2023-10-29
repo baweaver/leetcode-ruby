@@ -1,3 +1,4 @@
+# typed: true
 # Find the distance between two nodes in BST.
 #
 # Example:

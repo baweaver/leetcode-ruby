@@ -1,3 +1,4 @@
+# typed: strict
 # -*- coding: utf-8 -*-
 #
 # @lc app=leetcode id=2 lang=ruby
@@ -19,30 +20,57 @@
 # Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
 # Output: 7 -> 0 -> 8
 # Explanation: 342 + 465 = 807.
-#
-# Definition for singly-linked list.
-# class ListNode
-#     attr_accessor :val, :next
-#     def initialize(val)
-#         @val = val
-#         @next = nil
-#     end
-# end
 
-
-# @param {ListNode} l1
-# @param {ListNode} l2
-# @return {ListNode}
-def add_two_numbers(l1, l2)
-  curr, carry = ListNode.new(nil), 0
-  ans = curr
-  while !l1.nil? || !l2.nil? || !carry.zero?
-    sum = carry + l1&.val.to_i + l2&.val.to_i
-    carry = sum / 10
-    curr.next = ListNode.new(sum % 10)
-    curr = curr.next
-    l1 = l1.next if !l1.nil?
-    l2 = l2.next if !l2.nil?
+require 'rspec'
+require 'rspec/autorun'
+require 'sorbet-runtime'
+
+extend T::Sig
+
+ListNode = Struct.new(:value, :next) do
+  def self.from_int(n)
+    n.digits.reverse.reduce(nil) { |list, digit| ListNode[digit, list] }
   end
-  ans.next
+
+  def self.empty
+    ListNode[nil, nil]
+  end
+end
+
+sig do
+  params(
+    list_one: ListNode,
+    list_two: ListNode
+  ).returns(ListNode)
+end
+def add_two_numbers(list_one, list_two)
+  current_node = ListNode.empty
+  answer = current_node
+  carry = 0
+
+  while list_one || list_two || carry.positive?
+    sum = carry + list_one&.value.to_i + list_two&.value.to_i
+    carry = sum / 10
+
+    current_node.next = ListNode[sum % 10]
+    current_node = current_node.next
+
+    list_one &&= list_one.next
+    list_two &&= list_two.next
+  end
+
+  answer.next
+end
+
+# Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+# Output: 7 -> 0 -> 8
+# Explanation: 342 + 465 = 807.
+
+RSpec.describe 'Solution 2 - Add Two Numbers' do
+  it 'sums two linked lists into another linked list' do
+    list_one = ListNode.from_int(342)
+    list_two = ListNode.from_int(465)
+
+    expect(add_two_numbers(list_one, list_two)).to eq(ListNode.from_int(807))
+  end
 end

@@ -1,3 +1,4 @@
+# typed: false
 # Given string contains only 'a' and 'b', their are 2 ops you can do:
 #
 #   1. flip a to b at certain index.

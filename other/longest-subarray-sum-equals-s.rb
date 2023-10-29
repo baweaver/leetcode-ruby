@@ -1,3 +1,4 @@
+# typed: false
 # Codefight: https://app.codesignal.com/interview-practice/task/izLStwkDr5sMS9CEm/
 
 def findLongestSubarrayBySum(s, arr)

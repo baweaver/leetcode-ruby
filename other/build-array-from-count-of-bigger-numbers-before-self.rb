@@ -1,3 +1,4 @@
+# typed: true
 # You are given an integer array 'counts' of size n. The counts array
 # has the property where counts[i] is the number of bigger elements to
 # the left of nums[i], the range of nums is 1..n, build the original

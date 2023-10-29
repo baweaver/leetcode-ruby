@@ -1,3 +1,4 @@
+# typed: false
 # Farmer John's N (1 <= N <= 100,000) cows are lined up in a row and
 # numbered 1..N. The cows are conducting another one of their strange
 # protests, so each cow i is holding up a sign with an integer A_i

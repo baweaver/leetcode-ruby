@@ -1,3 +1,4 @@
+# typed: false
 # Codefight: https://app.codesignal.com/interview-practice/task/5vXzdE9yzjsoMZ9sk
 
 eval <<-Ruby

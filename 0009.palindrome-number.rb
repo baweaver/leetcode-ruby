@@ -1,3 +1,4 @@
+# typed: strict
 # -*- coding: utf-8 -*-
 #
 # @lc app=leetcode id=9 lang=ruby

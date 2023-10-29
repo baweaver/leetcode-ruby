@@ -1,3 +1,4 @@
+# typed: false
 # -*- coding: utf-8 -*-
 #
 # @lc app=leetcode id=5 lang=ruby
@@ -20,7 +21,7 @@
 # Input: "cbbd"
 # Output: "bb"
 
-
+
 # "cacbbcb": find all segment with the same character.
 #   "c" "a" "c" "bb" "c" "b" expand each segment:
 #   "c" "cac" "c" "cbbc" "bcb" "b"

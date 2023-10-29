@@ -1,3 +1,4 @@
+# typed: false
 # There is a village with two kinds of people- villagers (represented
 # by 0) and defenders (represented by 1). When enemy attacks the
 # defenders stand in front as shown below:

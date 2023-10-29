@@ -1,3 +1,4 @@
+# typed: false
 # -*- coding: utf-8 -*-
 #
 # @lc app=leetcode id=3 lang=ruby
@@ -29,7 +30,7 @@
 # the answer must be a substring, "pwke" is a subsequence and not a
 # substring.
 
-
+
 # The key is to keep a sliding window of substring without repeating
 # characters. Example:
 #
@@ -52,18 +53,41 @@
 #
 # max: 3
 
-# @param {String} s
-# @return {Integer}
-def length_of_longest_substring(s)
+require 'rspec'
+require 'rspec/autorun'
+require 'sorbet-runtime'
+
+extend T::Sig
+
+sig { params(string: String).returns(Numeric) }
+def length_of_longest_substring(string)
+  last_seen_position = Hash.new(0)
+
   result = 0
-  hash = {}
-  j = 0
-  for i in 0...s.length
-    if hash.has_key?(s[i])
-      j = [hash[s[i]]+1, j].max
+  following_cursor = 0
+
+  string.chars.each_with_index do |char, lead_cursor|
+    if last_seen_position.key?(char)
+      following_cursor = [last_seen_position[char] + 1, following_cursor].max
     end
-    result = [i-j+1, result].max
-    hash[s[i]] = i
+
+    result = [lead_cursor - following_cursor + 1, result].max
+    last_seen_position[char] = lead_cursor
   end
+
   result
+end
+
+RSpec.describe 'Solution 3 - Longest Substring Without Repeating Characters' do
+  it 'works with the example 1' do
+    expect(length_of_longest_substring("abcabcbb")).to eq(3)
+  end
+
+  it 'works with the example 2' do
+    expect(length_of_longest_substring("bbbbb")).to eq(1)
+  end
+
+  it 'works with the example 3' do
+    expect(length_of_longest_substring("pwwkew")).to eq(3)
+  end
 end

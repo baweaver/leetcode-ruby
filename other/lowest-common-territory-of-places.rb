@@ -1,3 +1,4 @@
+# typed: true
 # Find the lowest common territory that holds the given two places.
 # First column of each row is enclosing region, and following columns
 # are all the regions within that row.

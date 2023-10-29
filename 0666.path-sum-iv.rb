@@ -1,3 +1,4 @@
+# typed: false
 # -*- coding: utf-8 -*-
 #
 # If the depth of a tree is smaller than 5, then this tree can be
